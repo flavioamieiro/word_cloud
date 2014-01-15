@@ -16,7 +16,7 @@ from query_integral_image import query_integral_image
 FONT_PATH = "/usr/share/fonts/TTF/DejaVuSansMono.ttf"
 
 
-def make_wordcloud(words, counts, fname, font_path=None, width=400, height=200,
+def make_wordcloud(words, counts, font_path=None, width=400, height=200,
                    margin=5, ranks_only=False):
     """Build word cloud using word counts, store in image.
 
@@ -33,10 +33,6 @@ def make_wordcloud(words, counts, fname, font_path=None, width=400, height=200,
     font_path : string
         Font path to the font that will be used.
         Defaults to DroidSansMono path.
-
-    fname : sting
-        Output filename. Extension determins image type
-        (written with PIL).
 
     width : int (default=400)
         Width of the word cloud image.
@@ -151,9 +147,7 @@ def make_wordcloud(words, counts, fname, font_path=None, width=400, height=200,
         draw.setfont(transposed_font)
         draw.text((position[1], position[0]), word,
                   fill="hsl(%d" % random.randint(0, 255) + ", 80%, 50%)")
-    img.show()
-    img.save(fname)
-
+    return img
 
 if __name__ == "__main__":
 
@@ -181,4 +175,6 @@ if __name__ == "__main__":
     counts = counts[counts > 1]
     output_filename = (os.path.splitext(os.path.basename(sources[0]))[0]
                        + "_.png")
-    counts = make_wordcloud(words, counts, output_filename)
+    wordcloud = make_wordcloud(words, counts)
+    wordcloud.show()
+    wordcloud.save(output_filename)
