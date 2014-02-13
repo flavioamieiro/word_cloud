@@ -13,7 +13,7 @@ from PIL import ImageFont
 import numpy as np
 from query_integral_image import query_integral_image
 
-FONT_PATH = "/usr/share/fonts/TTF/DejaVuSansMono.ttf"
+FONT_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
 
 def make_wordcloud(words, counts, font_path=None, width=400, height=200,
